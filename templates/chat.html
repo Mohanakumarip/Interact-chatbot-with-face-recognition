@@ -1,0 +1,237 @@
+<!-- working -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SIA Voice Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f0f0f0;
+      color: #000;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    #voiceSelect, #stopBtn {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    #subtitles {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      background: #ffffff;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #222;
+      min-height: 40px;
+      font-size: 16px;
+    }
+    #chatBox {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+    .bot-message, .user-message {
+      background-color: #f9f9f9;
+      padding: 10px 14px;
+      margin: 6px 0;
+      border-radius: 8px;
+      max-width: 80%;
+      font-size: 15px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .user-message {
+      align-self: flex-end;
+      background-color: #d1e7dd;
+    }
+    .bot-message {
+      align-self: flex-start;
+      background-color: #e9ecef;
+    }
+    video {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎙️ Welcome to SIA</h2>
+
+  <label for="voiceSelect">Choose Voice:</label>
+  <select id="voiceSelect"></select>
+  <button id="stopBtn" disabled>Stop Speaking</button>
+
+  <div id="subtitles">Initializing face recognition...</div>
+  <video id="video" autoplay muted playsinline></video>
+  <canvas id="canvas" style="display:none;"></canvas>
+
+  <div id="chatBox"></div>
+
+  <script src="/static/chat.js"></script>
+</body>
+</html> -->
+<!-- working -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SIA Voice Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f0f0f0;
+      color: #000;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    #voiceSelect,
+    #stopBtn {
+      padding: 5px 10px;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+
+    #subtitles {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      background: #ffffff;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #222;
+      min-height: 40px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    #chatBox {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bot-message,
+    .user-message {
+      background-color: #f9f9f9;
+      padding: 10px 14px;
+      margin: 6px 0;
+      border-radius: 8px;
+      max-width: 80%;
+      font-size: 15px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-message {
+      align-self: flex-end;
+      background-color: #d1e7dd;
+    }
+
+    .bot-message {
+      align-self: flex-start;
+      background-color: #e9ecef;
+    }
+
+    video,
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎙️ Welcome to SIA</h2>
+
+  <label for="voiceSelect">Choose Voice:</label>
+  <select id="voiceSelect"></select>
+  <button id="stopBtn" disabled>Stop Speaking</button>
+
+  <div id="subtitles">Initializing face recognition...</div>
+
+  !-- Webcam and face detection --
+  <video id="video" autoplay muted playsinline></video>
+  <canvas id="canvas" style="display:none;"></canvas>
+
+  !-- Chat history (optional future use) --
+  <div id="chatBox"></div>
+
+  !-- Client-side logic --
+  <script src="/static/chat.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SIA Chat</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f5f7fa;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+
+    #subtitles {
+      font-size: 1.5rem;
+      margin: 20px auto;
+      padding: 15px;
+      width: 80%;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      background-color: #fff;
+    }
+
+    select, button {
+      font-size: 1rem;
+      margin: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button {
+      background-color: #444;
+      color: #fff;
+    }
+
+    button:disabled {
+      background-color: #888;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Welcome to SIA Chat Assistant</h1>
+
+  <div id="subtitles">Initializing chat...</div>
+
+  <div>
+    <select id="voiceSelect" class="form-select d-inline-block w-auto"></select>
+    <button id="stopBtn" disabled>🔇 Stop</button>
+    <!-- <button onclick="Voice()">🔊 Test Voice</button> -->
+  </div>
+
+  <!-- Optional: div for future chat history -->
+  <!-- <div id="chatBox"></div> -->
+
+  <!-- Link to updated chat.js -->
+  <script src="/static/chat.js"></script>
+</body>
+</html>
